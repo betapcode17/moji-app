@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      trim: true, //
+      trim: true,
       lowercase: true,
     },
     hashedPassword: {
@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      trim: true,
       lowercase: true,
+      trim: true,
     },
     displayName: {
       type: String,
@@ -26,23 +26,22 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
     avatarUrl: {
-      type: String, //link CDN hiển thị hình
+      type: String, // link CDN để hiển thị hình
     },
     avatarId: {
-      type: String, //Cloudinary public_id để xóa hình
+      type: String, // Cloudinary public_id để xoá hình
     },
     bio: {
       type: String,
-      maxlength: 500,
+      maxlength: 500, // tuỳ
     },
     phone: {
       type: String,
-      sparse: true, //cho phép null , nhưng không được trùng
+      sparse: true, // cho phép null, nhưng không được trùng
     },
   },
   {
-    // mongoose tự thêm 2 trường createdAt và updatedAt
-    timeStamps: true,
+    timestamps: true,
   }
 );
 
