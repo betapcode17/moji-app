@@ -1,38 +1,33 @@
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@radix-ui/react-label";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Input } from "../components/ui/input";
+import { Button } from "../components/ui/button";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"; // kết nối zod với react hook form
 
-const signUpSchema = z.object({
-  firstname: z.string().min(1, "Tên bắt buộc phải có"),
-  lastname: z.string().min(1, "Họ bắt buộc phải có"),
+const signInSchema = z.object({
   username: z.string().min(3, "Tên đăng nhập phải có ít nhất 3 ký tự"),
-  email: z.email("Email không hợp lệ"),
   password: z.string().min(6, "mật khẩu phải có ít nhất 6 ký tự"),
 });
 
-type SignUpFormValue = z.infer<typeof signUpSchema>;
+type SignInFormValue = z.infer<typeof signInSchema>;
 
-export function SignupForm({
+export function SignInForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  //hook giúp xử lý mọi thứ từ lấy dữ liệu của input kiểm tra xem input có hợp lệ không cho đến gửi form
-  // zod lo phần kiểm tra dữ liệu react hook form lo phần kiểm tra trạng thái
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<SignUpFormValue>({
-    resolver: zodResolver(signUpSchema),
+  } = useForm<SignInFormValue>({
+    resolver: zodResolver(signInSchema),
   });
-  const onSubmit = async (data: SignUpFormValue) => {
+  const onSubmit = async (data: SignInFormValue) => {
     // Use the submitted data (replace with real submission logic)
-    console.log("Signup data:", data);
+    console.log("Signin data:", data);
   };
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -45,46 +40,13 @@ export function SignupForm({
                 <a href="" className="mx-auto block w-fit text-center">
                   <img src="/logo.svg" alt="logo" />
                 </a>
-                <h1 className="text-2xl font-bold">Tạo tài khoản Moji</h1>
+                <h1 className="text-2xl font-bold">Chào mừng quay lại</h1>
                 <p className="text-muted-foreground text-balance">
                   {/* text balance chia dòng cân đôi */}
-                  Chào mừng bạn! hãy đăng ký để bắt đầu
+                  Đăng nhập vào tài khoản Moji của bạn
                 </p>
               </div>
-              {/* Họ và tên */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-2">
-                  <Label htmlFor="lastname" className="block text-sm">
-                    Họ
-                  </Label>
-                  <Input
-                    type="text"
-                    id="lastname"
-                    {...register("lastname")}
-                  ></Input>
-                  {/* In error */}
-                  {errors.lastname && (
-                    <p className="text-destructive text-sm">
-                      {errors.lastname.message}
-                    </p>
-                  )}
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="firstname" className="block text-sm">
-                    Tên
-                  </Label>
-                  <Input
-                    type="text"
-                    id="firstname"
-                    {...register("firstname")}
-                  ></Input>
-                  {errors.firstname && (
-                    <p className="text-destructive text-sm">
-                      {errors.firstname.message}
-                    </p>
-                  )}
-                </div>
-              </div>
+
               {/* username */}
               <div className="flex flex-col gap-2">
                 <Label htmlFor="username" className="block text-sm">
@@ -102,23 +64,7 @@ export function SignupForm({
                   </p>
                 )}
               </div>
-              {/* email  */}
-              <div className="flex flex-col gap-2">
-                <Label htmlFor="email" className="block text-sm">
-                  Email
-                </Label>
-                <Input
-                  type="text"
-                  id="email"
-                  placeholder="m@gmail.com"
-                  {...register("email")}
-                ></Input>
-                {errors.email && (
-                  <p className="text-destructive text-sm">
-                    {errors.email.message}
-                  </p>
-                )}
-              </div>
+
               {/* password */}
               <div className="flex flex-col gap-2">
                 <Label htmlFor="password" className="block text-sm">
@@ -135,22 +81,22 @@ export function SignupForm({
                   </p>
                 )}
               </div>
-              {/* nút đăng ký */}
+              {/* nút đăng nhập */}
               <Button type="submit" className="w-full" disabled={isSubmitting}>
-                Tạo tài khoản
+                Đăng nhập
               </Button>
 
               <div className="text-center text-sm">
-                Đã có tài khoản?{" "}
-                <a href="/signin" className="underline underline-offset-4">
-                  Đăng nhập
+                Bạn chưa có tài khoản?{" "}
+                <a href="/signup" className="underline underline-offset-4">
+                  Đăng ký
                 </a>
               </div>
             </div>
           </form>
           <div className="bg-muted relative hidden md:block">
             <img
-              src="/placeholderSignUp.png"
+              src="/placeholder.png"
               alt="Image"
               className="absolute top-30 object-cover"
               style={{ transform: "translateY(0.125rem)" }}
