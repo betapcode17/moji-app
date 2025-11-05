@@ -5,8 +5,8 @@ export const authService = {
     username: string,
     email: string,
     password: string,
-    lastname: string,
-    firstname: string
+    firstName: string,
+    lastName: string
   ) => {
     const res = await api.post(
       "/auth/signup",
@@ -14,14 +14,31 @@ export const authService = {
         username,
         password,
         email,
-        firstname,
-        lastname,
+        firstName,
+        lastName,
       },
       {
         withCredentials: true,
       }
     );
 
+    return res.data;
+  },
+  SignIn: async (username: string, password: string) => {
+    const res = await api.post(
+      "/auth/signin",
+      {
+        username,
+        password,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+    return res.data; //access token
+  },
+  SignOut: async () => {
+    const res = await api.post("/auth/signout", {}, { withCredentials: true });
     return res.data;
   },
 };

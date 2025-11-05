@@ -5,6 +5,7 @@ import authRoute from "./routes/authRoute.js";
 import cookieParser from "cookie-parser";
 import userRoute from "./routes/userRouter.js";
 import { protectedRoute } from "./middlewares/authMiddleware.js";
+import cors from "cors";
 dotenv.config();
 const app = express();
 
@@ -21,6 +22,15 @@ app.use("/api/auth", authRoute);
 //private routes
 app.use(protectedRoute);
 app.use("api/users", userRoute);
+
+//use cors
+app.use(
+  cors({
+    origin: "*", // Cho phép tất cả nguồn
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 connectDB().then(() => {
   app.listen(PORT, () => {
