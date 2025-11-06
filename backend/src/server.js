@@ -6,34 +6,32 @@ import cookieParser from "cookie-parser";
 import userRoute from "./routes/userRouter.js";
 import { protectedRoute } from "./middlewares/authMiddleware.js";
 import cors from "cors";
+
 dotenv.config();
 const app = express();
-
 const PORT = process.env.PORT || 5001;
 
-// middlewares
-//đọc request body dưới dạng json
-app.use(express.json());
-app.use(cookieParser());
-
-//public routes
-app.use("/api/auth", authRoute);
-
-//private routes
-app.use(protectedRoute);
-app.use("api/users", userRoute);
-
-//use cors
+// CORS
 app.use(
   cors({
-    origin: "*", // Cho phép tất cả nguồn
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: "http://localhost:5173",
+    credentials: true,
   })
 );
 
+// Middleware
+app.use(express.json());
+app.use(cookieParser());
+
+// Public routes
+app.use("/api/auth", authRoute);
+
+// Private routes
+app.use("/api/users", protectedRoute, userRoute);
+
+// Connect DB & Start server
 connectDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`server bắt đầu trên cổng ${PORT}`);
+    console.log(`✅ Server bắt đầu trên cổng ${PORT}`);
   });
 });

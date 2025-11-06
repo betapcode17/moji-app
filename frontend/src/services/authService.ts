@@ -41,4 +41,17 @@ export const authService = {
     const res = await api.post("/auth/signout", {}, { withCredentials: true });
     return res.data;
   },
+  fetchMe: async () => {
+    try {
+      const res = await api.get("/users/me");
+      console.log("User info:", res.data);
+      return res.data;
+    } catch (err) {
+      console.error("Lỗi khi fetchMe:", err);
+    }
+  },
+  refresh: async () => {
+    const res = await api.post("/auth/refresh", { withCredentials: true });
+    return res.data.accessToken;
+  },
 };
