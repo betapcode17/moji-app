@@ -59,12 +59,12 @@ const conservationSchema = new mongoose.Schema(
       enum: ["direct", "group"],
       require: true,
     },
-    // nhung nguoi tham gia hoi thoai
+    // nhung nguoi tham gia hoi thoai tham gia thoi gian nao
     participants: {
       type: [participantSchema],
       required: true,
     },
-    // thuoc nhom nao
+    // thuoc nhom nao ten nhom tao boi ai
     group: {
       type: groupSchema,
       required: true,
