@@ -1,77 +1,57 @@
-🌟 Moji App — Fullstack Social Network with Real-Time Chat
+# 🌟 Moji App — Modern Fullstack Social Network with Real-Time Chat
 
-Moji App is a modern social networking application where users can register, log in, and chat in real-time.
-The project is built from scratch using a secure JWT authentication system, combining a React frontend with an Express backend.
+> **Connect instantly. Chat in real time. Built with love and modern tech.**
 
-This project demonstrates a fully functional fullstack architecture with smooth communication between client and server, focusing on security, performance, and user experience.
+Moji is a sleek, secure, and blazing-fast social networking app featuring real-time messaging, built from the ground up with industry-best practices.
 
-🚀 Project Overview
+![Moji Banner](https://via.placeholder.com/1920x600/6366f1/ffffff?text=Moji+App+%E2%80%94+Real-Time+Social+Experience)  
+*Real-time chat • Secure authentication • Beautiful UI*
 
-This project includes a complete JWT-based authentication flow, featuring:
+---
 
-User Registration
+### ✨ Features
 
-Login
+| Feature                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| 🔐 Secure JWT Auth       | Access + Refresh Token system with auto-refresh                             |
+| 🍪 HttpOnly Cookies      | Refresh tokens stored securely (immune to XSS)                              |
+| ⚡ Real-Time Chat         | Powered by Socket.IO — instant messaging & typing indicators               |
+| 🟢 Online Status         | See who’s online in real-time                                               |
+| 🛡️ Protected Routes      | Both frontend & backend fully secured                                       |
+| 🚀 Blazing Fast          | Built with Vite + React for instant load times                              |
+| 🎨 Modern UI             | Clean, responsive design with TailwindCSS (optional)                        |
+| 🌙 Dark Mode Ready       | Looks stunning in light & dark themes                                       |
 
-Access Token + Refresh Token flow
+---
 
-Auto-refreshing tokens with Axios Interceptors
+### 🛠️ Tech Stack
 
-Secure HttpOnly cookies
+#### Frontend
+<div align="center">
 
-Protected API routes and protected frontend routes
+| Technology            | Purpose                          |
+|-----------------------|----------------------------------|
+| React + Vite          | Lightning-fast development & build |
+| TypeScript            | Type safety & better DX          |
+| Zustand               | Lightweight global state         |
+| Axios + Interceptors  | Smart token refresh handling     |
+| React Router v6       | Protected & dynamic routing      |
+| Socket.IO Client      | Real-time bidirectional comms    |
+| TailwindCSS           | Beautiful, utility-first styling |
 
-Real-time chat using Socket.io
+</div>
 
-🛠️ Technologies Used
-🎨 Frontend
-Technology	Purpose
-React + Vite	Frontend UI
-JavaScript / TypeScript	Main programming language
-Zustand	Global state management
-Axios + Interceptors	API requests + token handling
-React Router DOM	Routing & protected routes
-Socket.io Client	Real-time chat
-TailwindCSS (optional)	Fast and modern styling
-⚙️ Backend
-Technology	Purpose
-Node.js + Express.js	REST API
-JWT (JSON Web Token)	Authentication
-bcrypt	Password hashing
-HttpOnly / Secure Cookies	Refresh token storage
-MongoDB + Mongoose	Database (optional setup)
-Socket.io	Real-time communication
-dotenv, CORS, middleware	Security & configuration
-🔐 Authentication System Overview
+#### Backend
+<div align="center">
 
-Moji App uses a secure, industry-standard authentication workflow:
+| Technology            | Purpose                          |
+|-----------------------|----------------------------------|
+| Node.js + Express     | Robust REST API                  |
+| JWT                   | Stateless authentication        |
+| bcrypt                | Secure password hashing          |
+| HttpOnly/Secure Cookies | Safe refresh token storage     |
+| MongoDB + Mongoose    | Flexible NoSQL database          |
+| Socket.IO             | Real-time engine                 |
+| CORS & Middleware     | Security & request handling      |
 
-✔️ Access Token
-
-Short-lived
-
-Sent through the Authorization header
-
-✔️ Refresh Token
-
-Stored in HttpOnly cookies
-
-Automatically used by Axios Interceptors to refresh the access token
-
-Protected against XSS attacks
-
-✔️ Protected Routes
-
-Backend routes require valid access tokens
-
-Frontend redirects unauthorized users
-
-💬 Real-Time Chat Features
-
-Built using Socket.io, the chat system supports:
-
-Real-time message sending and receiving
-
-“User online/offline” detection
-
-Live conversation updates
+</div>
