@@ -12,6 +12,10 @@ const friendRequestSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    message: {
+      type: String,
+      maxlength: 300,
+    },
   },
   {
     timestamps: true,
