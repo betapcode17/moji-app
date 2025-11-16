@@ -1,57 +1,86 @@
 # 🌟 Moji App — Modern Fullstack Social Network with Real-Time Chat
 
-> **Connect instantly. Chat in real time. Built with love and modern tech.**
+> **Instant messaging • Rock-solid security • Stunning UI**
 
-Moji is a sleek, secure, and blazing-fast social networking app featuring real-time messaging, built from the ground up with industry-best practices.
+Moji is a sleek, high-performance social networking app built from scratch, featuring secure JWT authentication and buttery-smooth real-time chat powered by Socket.IO.
 
-![Moji Banner](https://via.placeholder.com/1920x600/6366f1/ffffff?text=Moji+App+%E2%80%94+Real-Time+Social+Experience)  
-*Real-time chat • Secure authentication • Beautiful UI*
+*Real-time chat • Secure JWT + HttpOnly Cookies • Modern design*
 
 ---
 
-### ✨ Features
+### ✨ Key Features
 
-| Feature                  | Description                                                                 |
-|--------------------------|-----------------------------------------------------------------------------|
-| 🔐 Secure JWT Auth       | Access + Refresh Token system with auto-refresh                             |
-| 🍪 HttpOnly Cookies      | Refresh tokens stored securely (immune to XSS)                              |
-| ⚡ Real-Time Chat         | Powered by Socket.IO — instant messaging & typing indicators               |
-| 🟢 Online Status         | See who’s online in real-time                                               |
-| 🛡️ Protected Routes      | Both frontend & backend fully secured                                       |
-| 🚀 Blazing Fast          | Built with Vite + React for instant load times                              |
-| 🎨 Modern UI             | Clean, responsive design with TailwindCSS (optional)                        |
-| 🌙 Dark Mode Ready       | Looks stunning in light & dark themes                                       |
+| Feature                    | Description                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| 🔐 Secure JWT Auth         | Short-lived Access Token + automatic silent refresh                        |
+| 🍪 HttpOnly + Secure Cookies | Refresh tokens stored in cookies (fully XSS-proof)                       |
+| ⚡ Real-Time Chat          | Socket.IO-powered instant messaging with typing indicators                 |
+| 🟢 Online/Offline Status   | Live user presence detection                                               |
+| 🛡️ Protected Routes        | Fully secured on both frontend and backend                                 |
+| 🚀 Lightning Fast          | Built with Vite + React → sub-second load times                            |
+| 🎨 Beautiful Modern UI     | Clean, responsive, mobile-first, Dark Mode ready                          |
+| 💬 Smooth Messaging        | Seen status, message grouping, scroll-to-bottom, and more                 |
 
 ---
 
 ### 🛠️ Tech Stack
 
 #### Frontend
-<div align="center">
-
-| Technology            | Purpose                          |
-|-----------------------|----------------------------------|
-| React + Vite          | Lightning-fast development & build |
-| TypeScript            | Type safety & better DX          |
-| Zustand               | Lightweight global state         |
-| Axios + Interceptors  | Smart token refresh handling     |
-| React Router v6       | Protected & dynamic routing      |
-| Socket.IO Client      | Real-time bidirectional comms    |
-| TailwindCSS           | Beautiful, utility-first styling |
-
-</div>
+| Technology            | Purpose                               |
+|-----------------------|---------------------------------------|
+| React + Vite          | Blazing-fast builds & HMR             |
+| TypeScript            | Type safety & great developer experience |
+| Zustand               | Lightweight & performant state management |
+| Axios + Interceptors  | Automatic access token refresh        |
+| React Router v6       | Protected routes & smooth navigation  |
+| Socket.IO Client      | Real-time bidirectional communication |
+| TailwindCSS           | Rapid, beautiful styling              |
 
 #### Backend
+| Technology               | Purpose                               |
+|--------------------------|---------------------------------------|
+| Node.js + Express        | Robust and scalable REST API          |
+| JWT + Refresh Tokens     | Stateless authentication              |
+| bcrypt                   | Secure password hashing               |
+| HttpOnly/Secure Cookies  | Safe refresh token storage            |
+| MongoDB + Mongoose       | Flexible NoSQL database               |
+| Socket.IO                | Real-time engine                      |
+| CORS + Middleware        | Security & request handling           |
+
+---
+
+### 📸 Screenshots
+
 <div align="center">
 
-| Technology            | Purpose                          |
-|-----------------------|----------------------------------|
-| Node.js + Express     | Robust REST API                  |
-| JWT                   | Stateless authentication        |
-| bcrypt                | Secure password hashing          |
-| HttpOnly/Secure Cookies | Safe refresh token storage     |
-| MongoDB + Mongoose    | Flexible NoSQL database          |
-| Socket.IO             | Real-time engine                 |
-| CORS & Middleware     | Security & request handling      |
+**Login**  
+<img src="https://github.com/user-attachments/assets/3c2bdeb5-b958-4148-bfc0-f36c4f24d1cf" alt="Login Screen" />
+
+**Register**  
+<img src="https://github.com/user-attachments/assets/d22b399f-9a40-4ec5-8214-72e9d34c6ef4" alt="Register Screen" />
+
+**Home & Chat Interface**  
+<img src="https://github.com/user-attachments/assets/64157e05-10be-4998-8747-eeac71e3532d" alt="Home and Chat" />
 
 </div>
+
+---
+
+### 🚀 Quick Start (Ready in 2 minutes)
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/moji-app.git
+cd moji-app
+
+# Backend
+cd backend
+cp .env.example .env
+npm install
+npm run dev
+
+# Frontend (open a new terminal)
+cd ../frontend
+cp .env.example .env
+npm install
+npm run dev
