@@ -1,5 +1,5 @@
-import Friend from "../models/Friend";
-import FriendRequest from "../models/FriendRequest";
+import Friend from "../models/Friend.js";
+import FriendRequest from "../models/FriendRequest.js";
 import User from "../models/User.js";
 
 export const sendFriendRequest = async (req, res) => {
@@ -102,6 +102,20 @@ export const acceptFriendRequest = async (req, res) => {
 
 export const declineFriendRequest = async (req, res) => {
   try {
+    const { requestId } = req.params;
+    const userId = req.user._id;
+    const request = await FriendRequest.findById(requestId);
+    if (!request) {
+      return res.status(404).json({ message: "Lời mời kết bạn không tồn tại" });
+    }
+    if (request.to.string() !== userId) {
+      return res
+        .status(403)
+        .json({ message: "Bạn không có quyền từ chối kết bạn" });
+    }
+
+    await FriendRequest.findByIdAndDelete(requestId);
+    return res.sendStatus(204);
   } catch (error) {
     console.error("Lỗi khi từ chối lời mời kết bạn : " + error);
     return res.status(500).json({ message: "Lỗi hệ thống" });

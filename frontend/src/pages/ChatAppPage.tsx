@@ -1,14 +1,14 @@
-import Logout from "@/auth/Logout";
-import { useAuthStore } from "@/stores/useAuthStore";
-
+import ChatWindowLayout from "@/components/chat/ChatWindowLayout";
+import { AppSidebar } from "@/components/sibebar/app-sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 const ChatAppPage = () => {
-  const user = useAuthStore((s) => s.user);
-
   return (
-    <div>
-      {user?.username}
-      <Logout></Logout>
-    </div>
+    <SidebarProvider>
+      <AppSidebar></AppSidebar>
+      <div className="flex h-screen w-full">
+        <ChatWindowLayout></ChatWindowLayout>
+      </div>
+    </SidebarProvider>
   );
 };
 
